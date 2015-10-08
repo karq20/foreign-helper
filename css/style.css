@@ -1,0 +1,139 @@
+* {box-sizing:border-box;}
+body {
+    background-image: url("../minworldmap.jpg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+
+    font-family: sans-serif;
+}
+
+
+.bgimg {
+    
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index:-1;
+    opacity:1;   
+
+}
+
+.header {
+    text-align:center; 
+    color: #ffdead;
+}
+
+.form-container {
+    color:#ffdead;
+}
+
+.greeting {
+    color:orange;
+    /*text-shadow: 1px 1px 3px rgba(255,255,255,.5);*/
+    text-align: center;
+    
+}
+
+.wikipedia-container {
+/*    float:right;*/
+    position:absolute;                     /*-----------*/
+    left:530px;                                 
+    border: 1px solid black;              /*-----------*/
+    margin: 0 auto;
+    width:330px;
+    padding-right:10px;
+    background-color: rgba(255,255,255,0.6);
+}
+
+#wikipedia-header {
+    text-align:center; 
+    color:green;
+}
+
+.nytimes-container {
+    border: 1px solid black; /*-----------*/
+    float:left;
+    padding-right: 15px;
+    background-color: rgba(255,255,255,0.6);
+    /*overflow:scroll;*/
+}
+
+#nytimes-header {
+    text-align:center; 
+    color: red;
+}
+
+.article-list {
+    width:470px;
+}
+
+.article {
+    list-style-type: none;
+    padding:10px;
+    border-top: 1px solid #CCC;
+}
+.article:first-child { border-top:none; }
+
+.gmap {
+
+    position:absolute;                     /*-----------*/
+    left:880px;
+    width:350px;
+    height:110px;  
+    margin-bottom:5px;
+    padding:0px 10px 5px 25px;
+    float: right;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+}
+
+.map-head {
+    text-align:center;
+    color: blue;
+}
+
+.map-para {
+    text-align:left;
+}
+
+.outer {
+    width: 100%;
+}
+
+.footer {
+    color:blue;
+    display: block; 
+    position: fixed; 
+    bottom: 10px;
+    right: 15px; 
+}
+
+.readme a{
+    color: #ffdead;
+    position: fixed;
+    float:right;
+    top: 10px;
+    right: 15px;
+}
+
+.streetcityerror {
+    font-weight:bold;
+    font-size:14px; 
+    padding-left:40px; 
+    padding-top:0;
+    padding-bottom:0;
+}
+
+.onlycityerror {
+    
+    font-weight:bold;
+    font-size:14px; 
+    position: relative; 
+    padding-left: 280px;
+    padding-top:0;
+    padding-bottom:0;
+    
+}
