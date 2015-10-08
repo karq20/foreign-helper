@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Your Moving Companion</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body> 
+    <h2 class="header">Your Moving Companion App!</h2>
+    
+    <header class="readme">
+        <a href="ReadMe/readme.txt">Read Me</a>
+    </header>
+    
+    <form id="form-container" class="form-container">
+        <label for="street"><strong>Street: </strong></label><input type="text" id="street" value="">
+        &nbsp;
+        <label for="city"><strong>City: </strong></label><input type="text" id="city" value="">
+        &nbsp;
+        <button id="submit-btn">Submit</button>
+    </form>
+
+    <div id="strerr"></div>
+    <div id="cityerr"></div>
+
+    <hr>
+
+    <h2 id="greeting" class="greeting">Where do you want to live?</h2>
+    <div class="outer">
+        <div class="wikipedia-container">
+            <h3 id="wikipedia-header">Relevant Wikipedia Links</h3>
+            <ul id="wikipedia-links">Type in an address above and find relevant Wikipedia articles here!</ul>
+        </div>
+        <div class="nytimes-container">
+            <h3 id="nytimes-header">New York Times Articles</h3>
+            <ul id="nytimes-articles" class="article-list">What's going on in your new city? Enter an address and hit submit and the NY Times will tell you here!</ul>
+        </div>
+        <div id="gmap" class="gmap">
+            <h3 class="map-head">Google Maps</h3>
+            <p class="map-para">Find interesting places nearby with the help of GMaps! </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>by Mohit Sudhakar</p>
+    </footer>
+    
+    
+    <noscript>Please enable Javascript to use this site!</noscript>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxI42bo06HsKr7lRUqMzokbaQdm6FUB0s&sensor=false"></script>
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+<!--    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxI42bo06HsKr7lRUqMzokbaQdm6FUB0s&libraries=places"></script>   -->
+
+ <!--   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxI42bo06HsKr7lRUqMzokbaQdm6FUB0s&callback=loadMap"></script>-->    
+
+</body>
+</html>
+
+
+
+
+    
