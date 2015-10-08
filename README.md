@@ -1,4 +1,5 @@
 /***** INFO ******/
+
 This site was made to facilitate people moving to foreign countries to better understand their environment. It was made using AJAX through jQuery, along with 4 external APIs.
 
 This site has the following features:
