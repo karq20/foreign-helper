@@ -209,45 +209,50 @@ function loadMap(){
                         infowindow.open(map,marker);
                     });
                     $('#gmap').css('height','400px');
-                    $('#gmap').css('width','250px');
+                    $('#gmap').css('width','350px');
                 }
             }
         });
-    
     }  //addon
-
 }
 
-function weather() {
-    var streetStr = $('#street').val();
-    var cityStr = $('#city').val(); 
+
+function updateWeather(cityStr) {
+
     var $weatherHeader = $('#weather-header');
     var $weatherInfo = $('#weather-info');
-    var lat2 = 0, lon2 = 0;
-    if (validate(streetStr, cityStr)) {
-
+    
+        //with this code, it does not wait for submit button to be clicked and autmatically fetches data from API
+        /*var cityStr = $('#city').val();  */
+      
         //passing cityStr
         var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityStr + "&APPID=2ef9e90f8ea043df6d3ed60bd738a919";
 
         //callback function from ajax request
         /*setInterval(myTimer, 1000);*/
         $.getJSON( weatherUrl, function(response) {
-            //clear previous data
-            $('#weathernewinfo').remove();
             //change dimensions of div
             $('.weather-container').css('height','200px');
+            
+            //clear previous data
+            $('#weathernewinfo').remove();
+            $weatherHeader.empty();
+            $weatherInfo.empty();
+          
             $weatherHeader.text('Weather in ' + cityStr);
             $weatherHeader.css('color','blue');
             description = response.weather[0].description;
-            temp = response.main.temp - 273;//subtract 273.15 to get celsius
+            temp = response.main.temp - 273.15;//subtract 273.15 to get celsius
             var temp_roundoff = Math.round(temp * 100) / 100;
             resplat = response.coord.lat;
             resplon = response.coord.lon;
             humidity = response.main.humidity;//add %
+            wind = Math.round(response.wind.speed * 18 / 5);
             $weatherInfo
             .append(
                 '<p id="weathernewinfo"><b>Temperature: '+temp_roundoff+'&deg;C</b><br>' + 
                 '<b>Humidity: '+humidity+'%</b><br>' + 
+                '<b>Wind: '+wind+' km/h</b><br>' + 
                 '<b>Description: '+description+'</b></p>'
             );
 
@@ -256,11 +261,30 @@ function weather() {
             $weatherHeader.text('Weather Data Could Not Be Loaded');
         });
 
-
-
-    }
-
 }
+
+
+function weather() {
+        
+    $('#form-container').submit(function() {
+        var streetStr = $('#street').val();
+        var cityStr = $('#city').val();            
+        if (validate(streetStr, cityStr)) {
+            setInterval(updateWeather(cityStr), 5000);
+        }
+    });
+        
+    //Testcase
+    /*
+    Weather in bangalore
+    Temperature: 32°C
+    Humidity: 62%
+    Description: scattered clouds
+    */             
+}      
+
+
+
 
 /*    
     $.getJSON({
@@ -283,8 +307,11 @@ function weather() {
 
 $(document).ready(function() {
 
+    weather();
+
     $('#form-container').submit(loadData);
+
     $('#form-container').submit(loadMap);
-    $('#form-container').submit(weather);
+    
 
 });

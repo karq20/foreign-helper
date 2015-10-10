@@ -92,7 +92,7 @@ body {
 
 .gmap {
 
-    width:250px;
+    width:350px;
     /*height: 200px;*/
     border: 1px solid black;
     float: left;
@@ -187,4 +187,11 @@ body {
 
 #weather-info {
     text-align: left;
+}
+
+.counter {
+  /*  position: fixed;*/
+    float:right;
+/*    top: 10px;*/
+    right: 15px;
 }
