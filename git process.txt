@@ -1,0 +1,6 @@
+//check status with 
+git status
+//git push origin master
+git add <file>  //-A to include all 
+git commit
+git push
