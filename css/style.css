@@ -1,13 +1,19 @@
 * {box-sizing:border-box;}
 body {
+/*  
     background-image: url("../minworldmap.jpg");
     background-repeat: no-repeat;
     background-position: top left;
     background-size: cover;
+*/
+    background: url("../minworldmap.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
     font-family: sans-serif;
 }
-
 
 .bgimg {
     
@@ -37,57 +43,64 @@ body {
     
 }
 
-.wikipedia-container {
-/*    float:right;*/
-    position:absolute;                     /*-----------*/
-    left:530px;                                 
-    border: 1px solid black;              /*-----------*/
-    margin: 0 auto;
-    width:330px;
-    padding-right:10px;
-    background-color: rgba(255,255,255,0.6);
-}
-
-#wikipedia-header {
-    text-align:center; 
-    color:green;
-}
-
 .nytimes-container {
     border: 1px solid black; /*-----------*/
     float:left;
-    padding-right: 15px;
+    padding-left: 0px;
+    padding-right: 20px;
+    margin-right: 5px;
     background-color: rgba(255,255,255,0.6);
     /*overflow:scroll;*/
 }
 
 #nytimes-header {
+    padding-left: 10px;
+    text-align:center; 
+    color: red;
+}
+#nyt-city {
     text-align:center; 
     color: red;
 }
 
-.article-list {
-    width:470px;
-}
+.article-list { width:300px; }
 
 .article {
     list-style-type: none;
-    padding:10px;
+/*    padding:10px;*/
     border-top: 1px solid #CCC;
 }
 .article:first-child { border-top:none; }
 
+.wikipedia-container {
+    float:left;
+    border: 1px solid black;              /*-----------*/
+    width:250px;
+    background-color: rgba(255,255,255,0.6);
+    padding-left: 0px;
+    padding-right: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+#wikipedia-header {
+    padding-left: 15px;
+    text-align:center; 
+    color:green;
+}
+
 .gmap {
 
-    position:absolute;                     /*-----------*/
-    left:880px;
-    width:350px;
-    height:110px;  
-    margin-bottom:5px;
-    padding:0px 10px 5px 25px;
-    float: right;
-    background-color: rgba(255,255,255,0.6);
+    width:250px;
+    /*height: 200px;*/
     border: 1px solid black;
+    float: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgba(255,255,255,0.6);
 }
 
 .map-head {
@@ -97,10 +110,6 @@ body {
 
 .map-para {
     text-align:left;
-}
-
-.outer {
-    width: 100%;
 }
 
 .footer {
@@ -120,20 +129,62 @@ body {
 }
 
 .streetcityerror {
-    font-weight:bold;
+
+    color: orange;
+/*    font-weight:bold;*/
     font-size:14px; 
-    padding-left:40px; 
+    padding-left:70px; 
     padding-top:0;
     padding-bottom:0;
 }
 
 .onlycityerror {
-    
-    font-weight:bold;
+    color: orange;
+/*  font-weight:bold;*/
     font-size:14px; 
     position: relative; 
-    padding-left: 280px;
+    padding-left: 300px;
     padding-top:0;
     padding-bottom:0;
     
+}
+/*customized for firefox browsers only*/
+@-moz-document url-prefix() {
+    .onlycityerror {
+        color: orange;
+        font-size:14px; 
+        position: relative; 
+        padding-left: 310px;
+        padding-top:0;
+        padding-bottom:0;
+        
+    }
+}
+
+/*floating divs side by side*/
+.outer {
+    width: 100%;
+    clear: both;
+
+}
+
+.weather-container {
+    border: 1px solid black;
+    float:left;
+    width:300px;
+    background-color: rgba(255,255,255,0.6);
+    padding-left: 0px;
+    padding-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+#weather-header {
+    text-align: center;
+    color: black;
+}
+
+#weather-info {
+    text-align: left;
 }
