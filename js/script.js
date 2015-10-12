@@ -247,11 +247,17 @@ function updateWeather(cityStr) {
             resplat = response.coord.lat;
             resplon = response.coord.lon;
             humidity = response.main.humidity;//add %
+            if(humidity != "undefined"){
+                humidity_perc = humidity + " %";
+            }
+            else {
+                humidity_perc = humidity;
+            } 
             wind = Math.round(response.wind.speed * 18 / 5);
             $weatherInfo
             .append(
                 '<p id="weathernewinfo"><b>Temperature: '+temp_roundoff+'&deg;C</b><br>' + 
-                '<b>Humidity: '+humidity+'%</b><br>' + 
+                '<b>Humidity: '+humidity_perc+'</b><br>' + 
                 '<b>Wind: '+wind+' km/h</b><br>' + 
                 '<b>Description: '+description+'</b></p>'
             );
