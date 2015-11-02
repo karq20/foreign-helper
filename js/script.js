@@ -216,80 +216,76 @@ function loadMap(){
     }  //addon
 }
 
+/*
 
-function updateWeather(cityStr) {
+Weather in new york @12.42AM India
+
+    Temperature: 16.5°C
+    Humidity: 67 %
+    Wind: 18 km/h
+    Description: overcast clouds
+
+*/
+
+function updateWeather() {
 
     var $weatherHeader = $('#weather-header');
     var $weatherInfo = $('#weather-info');
-    
-        //with this code, it does not wait for submit button to be clicked and autmatically fetches data from API
-        /*var cityStr = $('#city').val();  */
-      
-        //passing cityStr
-        var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + cityStr + "&APPID=2ef9e90f8ea043df6d3ed60bd738a919";
+    var streetStr = $('#street').val();
+    var cityStr = $('#city').val();
 
-        //callback function from ajax request
-        /*setInterval(myTimer, 1000);*/
-        $.getJSON( weatherUrl, function(response) {
-            //change dimensions of div
-            $('.weather-container').css('height','200px');
+    //with this code, it does not wait for submit button to be clicked and autmatically fetches data from API
+    /*var cityStr = $('#city').val();  */
+    if (validate(streetStr, cityStr)) {
+        var weatherAjax = function() {
+            //passing cityStr
+            var newCity = $('#city').val();
+            var weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + newCity + "&APPID=2ef9e90f8ea043df6d3ed60bd738a919";
+
+            //callback function from ajax request
+            /*setInterval(myTimer, 1000);*/
             
-            //clear previous data
-            $('#weathernewinfo').remove();
-            $weatherHeader.empty();
-            $weatherInfo.empty();
-          
-            $weatherHeader.text('Weather in ' + cityStr);
-            $weatherHeader.css('color','blue');
-            description = response.weather[0].description;
-            temp = response.main.temp - 273.15;//subtract 273.15 to get celsius
-            var temp_roundoff = Math.round(temp * 100) / 100;
-            resplat = response.coord.lat;
-            resplon = response.coord.lon;
-            humidity = response.main.humidity;//add %
-            if(humidity != "undefined"){
-                humidity_perc = humidity + " %";
-            }
-            else {
-                humidity_perc = humidity;
-            } 
-            wind = Math.round(response.wind.speed * 18 / 5);
-            $weatherInfo
-            .append(
-                '<p id="weathernewinfo"><b>Temperature: '+temp_roundoff+'&deg;C</b><br>' + 
-                '<b>Humidity: '+humidity_perc+'</b><br>' + 
-                '<b>Wind: '+wind+' km/h</b><br>' + 
-                '<b>Description: '+description+'</b></p>'
-            );
+            $.getJSON( weatherUrl, function(response) {
+                //change dimensions of div
+                $('.weather-container').css('height','200px');
+                
+                //clear previous data
+                $('#weathernewinfo').remove();
+                $weatherHeader.empty();
+                $weatherInfo.empty();
+              
+                $weatherHeader.text('Weather in ' + newCity);
+                $weatherHeader.css('color','blue');
+                description = response.weather[0].description;
+                temp = response.main.temp - 273.15;//subtract 273.15 to get celsius
+                var temp_roundoff = Math.round(temp * 100) / 100;
+                resplat = response.coord.lat;
+                resplon = response.coord.lon;
+                humidity = response.main.humidity;//add %
+                if(humidity != "undefined"){
+                    humidity_perc = humidity + " %";
+                }
+                else {
+                    humidity_perc = humidity;
+                } 
+                wind = Math.round(response.wind.speed * 18 / 5);
+                $weatherInfo
+                .append(
+                    '<p id="weathernewinfo"><b>Temperature: '+temp_roundoff+'&deg;C</b><br>' + 
+                    '<b>Humidity: '+humidity_perc+'</b><br>' + 
+                    '<b>Wind: '+wind+' km/h</b><br>' + 
+                    '<b>Description: '+description+'</b></p>'
+                );
 
-        })
-        .error(function(e){
-            $weatherHeader.text('Weather Data Could Not Be Loaded');
-        });
+            });
 
+        };
+        weatherAjax();
+        setInterval(weatherAjax, 10000);
+
+    }
+    
 }
-
-
-function weather() {
-        
-    $('#form-container').submit(function() {
-        var streetStr = $('#street').val();
-        var cityStr = $('#city').val();            
-        if (validate(streetStr, cityStr)) {
-            setInterval(updateWeather(cityStr), 5000);
-        }
-    });
-        
-    //Testcase
-    /*
-    Weather in bangalore
-    Temperature: 32°C
-    Humidity: 62%
-    Description: scattered clouds
-    */             
-}      
-
-
 
 
 /*    
@@ -313,7 +309,7 @@ function weather() {
 
 $(document).ready(function() {
 
-    weather();
+    $('#form-container').submit(updateWeather);
 
     $('#form-container').submit(loadData);
 
